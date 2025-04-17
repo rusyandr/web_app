@@ -1,0 +1,6 @@
+.scripts/
+
+*.log
+*.tmp
+
+.vscode/
