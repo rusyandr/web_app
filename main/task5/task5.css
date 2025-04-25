@@ -270,14 +270,13 @@ button:disabled {
     transform: none;
 }
 
-/* Добавим в CSS */
 .node.highlight circle {
-    fill: #ffcc80; /* Светло-оранжевый для пройденных узлов */
+    fill: #ffcc80;
     stroke: #e67e22;
 }
 
 .node.highlight:last-child circle {
-    fill: #ff9800; /* Ярко-оранжевый для текущего узла */
+    fill: #ff9800;
     stroke: #e65100;
     r: 12; /* Немного больше */
     filter: drop-shadow(0 0 2px rgba(255, 152, 0, 0.7));
