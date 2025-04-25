@@ -1,0 +1,330 @@
+:root {
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --secondary-color: #2c3e50;
+    --background-light: #f8f9fa;
+    --background-white: #ffffff;
+    --border-color: #e0e0e0;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --warning-color: #f39c12;
+    --text-color: #333333;
+    --text-light: #7f8c8d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--background-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+h1, h2 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-white);
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+    margin-bottom: 15px;
+    display: block;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-light);
+    width: 100%;
+    max-width: 400px;
+    transition: var(--transition);
+}
+
+input[type="file"]:hover {
+    border-color: var(--primary-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.error-message {
+    color: var(--error-color);
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+    border-left: 4px solid var(--error-color);
+}
+
+#treeContainer {
+    width: 100%;
+    overflow: auto;
+    margin-top: 20px;
+    min-height: 500px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-white);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    position: relative;
+}
+
+#treeVisualization {
+    display: block;
+    margin: 0 auto;
+}
+
+.node circle {
+    fill: var(--background-white);
+    stroke: var(--primary-color);
+    stroke-width: 2px;
+    transition: var(--transition);
+}
+
+.node text {
+    font: 13px 'Segoe UI', sans-serif;
+    fill: var(--secondary-color);
+}
+
+.link {
+    fill: none;
+    stroke: #bdc3c7;
+    stroke-width: 2px;
+    transition: var(--transition);
+}
+
+.node.highlight circle {
+    fill: var(--warning-color);
+    r: 12;
+    stroke: var(--secondary-color);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 4px rgba(243, 156, 18, 0.5));
+}
+
+.link.highlight {
+    stroke: var(--warning-color);
+    stroke-width: 3px;
+}
+
+.node.highlight text {
+    font-weight: bold;
+    fill: var(--secondary-color);
+}
+
+#results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(52, 152, 219, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.path-step {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: rgba(46, 204, 113, 0.08);
+    border-left: 4px solid var(--success-color);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.path-step:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.path-step strong {
+    color: var(--secondary-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.speed-control-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.speed-control-container label {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+#speedControl {
+    width: 200px;
+    accent-color: var(--primary-color);
+}
+
+.path-step {
+    cursor: pointer;
+    position: relative;
+    padding-left: 35px;
+}
+
+.path-step::before {
+    content: "→";
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: var(--primary-color);
+    font-weight: bold;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.path-step:hover::before {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.path-step.active {
+    background-color: rgba(52, 152, 219, 0.15);
+    border-left: 4px solid var(--primary-color);
+}
+
+.path-step.active::before {
+    opacity: 1;
+    transform: none;
+}
+
+/* Добавим в CSS */
+.node.highlight circle {
+    fill: #ffcc80; /* Светло-оранжевый для пройденных узлов */
+    stroke: #e67e22;
+}
+
+.node.highlight:last-child circle {
+    fill: #ff9800; /* Ярко-оранжевый для текущего узла */
+    stroke: #e65100;
+    r: 12; /* Немного больше */
+    filter: drop-shadow(0 0 2px rgba(255, 152, 0, 0.7));
+}
+
+.link.highlight {
+    stroke: #ffb74d;
+    stroke-width: 2px;
+}
+
+.node circle {
+    transition: all 0.3s ease;
+}
+
+.node.highlight:not(.current) circle {
+    filter: drop-shadow(0 0 2px rgba(255, 204, 128, 0.7));
+}
+
+.node.current circle {
+    filter: drop-shadow(0 0 4px rgba(255, 152, 0, 0.7));
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { r: 12; }
+    50% { r: 14; }
+    100% { r: 12; }
+}
+
+.link {
+    transition: stroke-opacity 0.5s ease;
+}
+
+.link.highlight {
+    stroke-opacity: 1 !important;
+}
+
+.category-labels line {
+    stroke-dasharray: 3,3;
+}
+
+.error-message {
+    color: var(--error-color);
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+    border-left: 4px solid var(--error-color);
+    display: none; /* Добавляем это свойство, чтобы блок изначально был скрыт */
+}

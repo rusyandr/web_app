@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дерево решений</title>
+    <link rel="stylesheet" href="task5.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Визуализатор дерева решений</h1>
+        
+        <div class="section">
+            <h2>1. Загрузить данные</h2>
+            <input type="file" id="csvFile" accept=".csv">
+            <div class="controls">
+                <button id="buildTreeBtn">Построить дерево</button>
+                <button id="runAlgorithmBtn" disabled>Запустить алгоритм</button>
+                <button id="stopAlgorithmBtn" disabled>Стоп</button>    
+            </div>
+            <div class="speed-control-container">
+                <label for="speedControl">Скорость анимации:</label>
+                <input type="range" id="speedControl" min="10" max="1000" value="500">
+            </div>
+            <div id="error" class="error-message"></div>
+        </div>
+        
+        <div class="section">
+            <h2>2. Визуализация дерева</h2>
+            <div id="treeContainer">
+                <svg id="treeVisualization" width="900" height="500"></svg>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>3. Результаты анализа</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="task5.js"></script>
+</body>
+</html>
