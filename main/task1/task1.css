@@ -1,0 +1,292 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('../assets/astarbackground1.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+#mapContainer {
+    width: 600px;
+    height: 600px;
+    background-color: rgba(174, 180, 251, 0.3);
+    border: 2px solid rgba(229, 227, 255, 0.7);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: grid;
+    gap: 2px;
+    overflow: hidden;
+}
+
+
+#controls {
+    background-color: rgba(43, 39, 147, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+#controls button {
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#controls button {
+    background-color: #5e64d6;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#controls button:hover {
+    background-color: #8e94dc;
+    transform: translateY(-2px);
+}
+
+#controls button:active {
+    transform: translateY(0);
+}
+
+#controls input[type="number"] {
+    width: 100%;
+    text-align: center;
+}
+
+#controls input[type="range"] {
+    width: 100%;
+}
+
+#controls label[for="mapSize"] {
+    font-size: 1em;
+    color: #ffffff;
+}
+
+#controls label[for="speedControl"] {
+    font-size: 1em;
+    color: #ffffff;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.control-group-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: center;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.control-row label {
+    flex-shrink: 0;
+    margin-bottom: 0; 
+    white-space: nowrap; 
+}
+
+.control-row input[type="number"] {
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #5e64d6;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.control-row input[type="range"] {
+    width: auto;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.cell {
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid rgba(221, 221, 221, 0.2);
+    background-color: rgba(43, 39, 147, 0.8);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.cell:hover {
+    transform: scale(1.05);
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#result {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.wall {
+    background-color: rgba(43, 39, 147, 0.95);
+    background-image: url('../assets/asteroid.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.start {
+    background-image: url('../assets/nlo.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(43, 39, 147, 0.7);
+    animation: pulseStart 1.5s infinite alternate;
+}
+
+.end {
+    background-image: url('../assets/earth.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(43, 39, 147, 0.7);
+    animation: pulseEnd 1.5s infinite alternate;
+}
+
+.visited {
+    background-color: rgba(7, 4, 90, 0.8);
+    opacity: 0.9;
+    transition: background-color 0.3s ease;
+}
+
+.frontier {
+    background-color: rgba(142, 148, 220, 0.8);
+    opacity: 0.9;
+    animation: frontierPulse 1s infinite alternate;
+}
+
+.current {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+.path {
+    background-color: rgba(43, 39, 147, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    z-index: 2;
+    animation: pathPulse 0.8s infinite alternate;
+}
+
+.path-arrow {
+    fill: white;
+    stroke: whitesmoke;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    animation: arrowBounce 0.6s infinite alternate;
+}
+
+.back-btn {
+    position: fixed;
+    bottom: 40px;
+    left: 100px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-btn-img-hover {
+    position: absolute;
+    opacity: 0;
+}
+
+.back-btn:hover .back-btn-img {
+    opacity: 0;
+}
+
+.back-btn:hover .back-btn-img-hover {
+    opacity: 1;
+}
+
+@keyframes pulseStart {
+    from { box-shadow: 0 0 5px rgba(100, 200, 255, 0.5); }
+    to { box-shadow: 0 0 20px rgba(100, 200, 255, 0.9); }
+}
+
+@keyframes pulseEnd {
+    from { box-shadow: 0 0 5px rgba(100, 200, 255, 0.5); }
+    to { box-shadow: 0 0 20px rgba(100, 200, 255, 0.9); }
+}
+
+@keyframes frontierPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+@keyframes pathPulse {
+    from { box-shadow: 0 0 5px rgba(255, 255, 255, 0); }
+    to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+}
+
+@keyframes arrowBounce {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-3px) scale(1.1); }
+}
