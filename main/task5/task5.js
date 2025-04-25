@@ -27,12 +27,10 @@ function stopAlgorithm() {
     stopAlgorithmBtn.disabled = true;
     runAlgorithmBtn.disabled = false;
     
-    // Снимаем выделение с активного пути
     document.querySelectorAll('.path-step').forEach(el => {
         el.classList.remove('active');
     });
     
-    // Возвращаем дерево в исходное состояние (без подсветки)
     if (treeData) {
         drawTree(treeData);
     }
@@ -40,14 +38,14 @@ function stopAlgorithm() {
 
 function handleFileUpload() {
     stopAlgorithm();
-    errorDiv.textContent = ''; // Очищаем сообщение об ошибке
-    errorDiv.style.display = 'none'; // Скрываем блок ошибки
+    errorDiv.textContent = '';
+    errorDiv.style.display = 'none';
     
     const file = csvFileInput.files[0];
     
     if (!file) {
         errorDiv.textContent = 'Пожалуйста, выберите CSV файл.';
-        errorDiv.style.display = 'block'; // Показываем блок ошибки
+        errorDiv.style.display = 'block';
         return;
     }
     
@@ -224,7 +222,6 @@ function drawTree(rootData, highlightedNodes = []) {
 }
 
 function runAlgorithm() {
-    // Останавливаем текущий алгоритм, если он выполняется
     stopAlgorithm();
     
     if (!treeData || !csvData.length) return;
@@ -299,8 +296,7 @@ function animatePaths() {
     currentPathIndex = 0;
     let currentHighlightedNodes = [];
 
-    // Начинаем анимацию с первого пути
-    highlightSpecificPath(currentPathIndex, false); // Добавляем параметр false для отключения прокрутки
+    highlightSpecificPath(currentPathIndex, false);
     animateStep();
 
     function animateStep() {
@@ -330,7 +326,6 @@ function animatePaths() {
 }
 
 function highlightSpecificPath(pathIndex, scrollToElement = true, speed = 500) {
-    // Останавливаем текущий алгоритм, если он выполняется
     if (animationInterval) {
         clearInterval(animationInterval);
         animationInterval = null;
