@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кластеризация точек</title>
+    <link rel="stylesheet" href="task2.css">
+</head>
+<body>
+    <h1>Кластеризируй звёздочки</h1>
+    <div class="wrapper">
+        <div class="content">
+            <canvas id="canvas" width="600" height="600"></canvas>
+            <div class="controls">
+                <button id="runButton" onclick="runClustering()"></button>
+                <button id="clearButton" onclick="clearCanvas()"></button>
+                <div class="slider-container">
+                    <label for="clusterSlider">Кластеров: <span id="clusterValue">3</span></label>
+                    <input type="range" id="clusterSlider" min="1" max="10" value="3" oninput="updateClusterValue()">
+                </div>
+            </div>
+        </div>
+        <a href="index.html" class="home-button"></a>
+    </div>
+    <script src="task2.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Коммивояжёр - генетический алгоритм</title>
+    <link rel="stylesheet" href="task3.css">
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1>Помоги эволюции найти лучший путь</h1>
+        <p>Кликни, чтобы поставить точку. Нажми <b>Enter</b>, чтобы запустить алгоритм.</p>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+            <div class="info-panel">
+                <div id="status">Статус: ожидание запуска</div>
+                <div id="length">Длина пути: N/A</div>
+                <div id="points">Точек: 0</div>
+            </div>
+            <div class="clear-btn-container">
+                <button id="clearButton"></button>
+            </div>
+        </div>
+        <div class="controls">
+            <a href="../index.html" class="home-btn">
+                <img src="../assets/genbackarrow.png" alt="Главная" class="home-btn-img">
+                <img src="../assets/genbackarrowsvet.png" alt="Главная" class="home-btn-img-hover">
+            </a>
+        </div>
+    </div>
+
+    <script src="task3.js"></script>
+</body>
+</html>
